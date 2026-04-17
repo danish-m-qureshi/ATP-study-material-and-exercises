@@ -1,0 +1,1450 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2869
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Deep Learning Study Guide</title>\
+    \
+    <!-- KaTeX -->\
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">\
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>\
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"\
+        onload="renderMathInElement(document.body, \{\
+            delimiters: [\
+                \{left: '$$', right: '$$', display: true\},\
+                \{left: '$', right: '$', display: false\}\
+            ]\
+        \})"></script>\
+    \
+    <!-- Inter font -->\
+    <link rel="preconnect" href="https://fonts.googleapis.com">\
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">\
+    \
+    <style>\
+        /* Reset & base */\
+        *, *::before, *::after \{ box-sizing: border-box; margin: 0; padding: 0; \}\
+        \
+        :root \{\
+            --bg: #0d1117;\
+            --bg-card: #161b22;\
+            --bg-card-2: #1c2230;\
+            --border: #30363d;\
+            --text: #e6edf3;\
+            --text-muted: #8b949e;\
+            --text-faint: #484f58;\
+            --accent: #58a6ff;\
+            --accent-teal: #2dd4bf;\
+            --accent-green: #3fb950;\
+            --accent-orange: #d29922;\
+            --accent-red: #f85149;\
+            --accent-purple: #bc8cff;\
+            --font-body: 'Inter', sans-serif;\
+            --font-mono: 'JetBrains Mono', monospace;\
+        \}\
+        \
+        html \{ scroll-behavior: smooth; \}\
+        \
+        body \{\
+            font-family: var(--font-body);\
+            background: var(--bg);\
+            color: var(--text);\
+            font-size: 16px;\
+            line-height: 1.7;\
+        \}\
+        \
+        /* Navigation */\
+        .top-nav \{\
+            position: sticky;\
+            top: 0;\
+            z-index: 100;\
+            background: rgba(13, 17, 23, 0.95);\
+            backdrop-filter: blur(10px);\
+            border-bottom: 1px solid var(--border);\
+            padding: 0;\
+        \}\
+        \
+        .nav-inner \{\
+            max-width: 1100px;\
+            margin: 0 auto;\
+            display: flex;\
+            align-items: center;\
+            gap: 0;\
+            padding: 0 24px;\
+            overflow-x: auto;\
+        \}\
+        \
+        .nav-brand \{\
+            font-size: 13px;\
+            font-weight: 600;\
+            color: var(--text-muted);\
+            padding: 16px 0;\
+            white-space: nowrap;\
+            margin-right: 24px;\
+            border-right: 1px solid var(--border);\
+            padding-right: 24px;\
+        \}\
+        \
+        .nav-tabs \{\
+            display: flex;\
+            gap: 0;\
+        \}\
+        \
+        .nav-tab \{\
+            padding: 16px 20px;\
+            font-size: 14px;\
+            font-weight: 500;\
+            color: var(--text-muted);\
+            cursor: pointer;\
+            border-bottom: 2px solid transparent;\
+            white-space: nowrap;\
+            transition: all 0.15s;\
+            background: none;\
+            border-top: none;\
+            border-left: none;\
+            border-right: none;\
+        \}\
+        \
+        .nav-tab:hover \{ color: var(--text); \}\
+        .nav-tab.active \{ color: var(--accent); border-bottom-color: var(--accent); \}\
+        \
+        /* Main layout */\
+        .container \{\
+            max-width: 900px;\
+            margin: 0 auto;\
+            padding: 40px 24px 80px;\
+        \}\
+        \
+        /* Section visibility */\
+        .chapter \{ display: none; \}\
+        .chapter.active \{ display: block; \}\
+        \
+        /* Typography */\
+        h1 \{ font-size: 2rem; font-weight: 700; margin-bottom: 8px; \}\
+        h2 \{ font-size: 1.4rem; font-weight: 600; margin: 40px 0 16px; color: var(--text); \}\
+        h3 \{ font-size: 1.1rem; font-weight: 600; margin: 24px 0 12px; color: var(--accent-teal); \}\
+        p \{ margin-bottom: 16px; color: var(--text); \}\
+        \
+        .chapter-header \{\
+            border-bottom: 1px solid var(--border);\
+            padding-bottom: 24px;\
+            margin-bottom: 40px;\
+        \}\
+        \
+        .chapter-tag \{\
+            font-size: 12px;\
+            font-weight: 600;\
+            letter-spacing: 1px;\
+            text-transform: uppercase;\
+            color: var(--accent);\
+            margin-bottom: 8px;\
+        \}\
+        \
+        .chapter-desc \{\
+            color: var(--text-muted);\
+            font-size: 15px;\
+            max-width: 65ch;\
+        \}\
+        \
+        /* Cards */\
+        .card \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border);\
+            border-radius: 8px;\
+            padding: 24px;\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .card-highlight \{\
+            background: rgba(88, 166, 255, 0.05);\
+            border-color: rgba(88, 166, 255, 0.3);\
+        \}\
+        \
+        .card-warning \{\
+            background: rgba(210, 153, 34, 0.05);\
+            border-color: rgba(210, 153, 34, 0.3);\
+        \}\
+        \
+        .card-success \{\
+            background: rgba(63, 185, 80, 0.05);\
+            border-color: rgba(63, 185, 80, 0.3);\
+        \}\
+        \
+        /* Info boxes */\
+        .info-box \{\
+            border-left: 3px solid var(--accent);\
+            padding: 16px 20px;\
+            background: rgba(88, 166, 255, 0.06);\
+            border-radius: 0 6px 6px 0;\
+            margin: 20px 0;\
+        \}\
+        \
+        .info-box.teal \{ border-color: var(--accent-teal); background: rgba(45, 212, 191, 0.06); \}\
+        .info-box.orange \{ border-color: var(--accent-orange); background: rgba(210, 153, 34, 0.06); \}\
+        .info-box.green \{ border-color: var(--accent-green); background: rgba(63, 185, 80, 0.06); \}\
+        .info-box.red \{ border-color: var(--accent-red); background: rgba(248, 81, 73, 0.06); \}\
+        \
+        /* Definition list */\
+        .def-list \{ display: grid; gap: 12px; margin: 16px 0; \}\
+        .def-item \{ display: grid; grid-template-columns: 180px 1fr; gap: 16px; align-items: start; \}\
+        .def-term \{ font-weight: 600; font-family: var(--font-mono); font-size: 13px; color: var(--accent-teal); \}\
+        .def-desc \{ color: var(--text); \}\
+        \
+        /* Tables */\
+        table \{\
+            width: 100%;\
+            border-collapse: collapse;\
+            margin: 20px 0;\
+            font-size: 14px;\
+        \}\
+        \
+        th \{\
+            background: var(--bg-card-2);\
+            padding: 10px 14px;\
+            text-align: left;\
+            font-weight: 600;\
+            font-size: 13px;\
+            color: var(--text-muted);\
+            border: 1px solid var(--border);\
+        \}\
+        \
+        td \{\
+            padding: 10px 14px;\
+            border: 1px solid var(--border);\
+            font-family: var(--font-mono);\
+            font-size: 13px;\
+        \}\
+        \
+        tr:nth-child(even) td \{ background: rgba(255,255,255,0.02); \}\
+        \
+        /* Math display */\
+        .math-block \{\
+            background: var(--bg-card-2);\
+            border: 1px solid var(--border);\
+            border-radius: 6px;\
+            padding: 20px;\
+            margin: 20px 0;\
+            text-align: center;\
+            overflow-x: auto;\
+        \}\
+        \
+        /* Steps */\
+        .steps \{ display: grid; gap: 12px; margin: 16px 0; \}\
+        \
+        .step \{\
+            display: flex;\
+            gap: 16px;\
+            align-items: flex-start;\
+        \}\
+        \
+        .step-num \{\
+            width: 28px;\
+            height: 28px;\
+            background: var(--accent);\
+            color: #000;\
+            border-radius: 50%;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-size: 13px;\
+            font-weight: 700;\
+            flex-shrink: 0;\
+            margin-top: 2px;\
+        \}\
+        \
+        .step-num.teal \{ background: var(--accent-teal); \}\
+        .step-num.orange \{ background: var(--accent-orange); \}\
+        .step-num.red \{ background: var(--accent-red); \}\
+        .step-num.green \{ background: var(--accent-green); \}\
+        \
+        .step-content \{ flex: 1; \}\
+        .step-title \{ font-weight: 600; margin-bottom: 4px; \}\
+        \
+        /* SVG Graph */\
+        .graph-container \{\
+            background: var(--bg-card-2);\
+            border: 1px solid var(--border);\
+            border-radius: 8px;\
+            padding: 20px;\
+            margin: 20px 0;\
+            overflow-x: auto;\
+        \}\
+        \
+        .graph-container svg \{ max-width: 100%; \}\
+        \
+        /* Exercises */\
+        .exercise \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border);\
+            border-radius: 8px;\
+            margin-bottom: 24px;\
+            overflow: hidden;\
+        \}\
+        \
+        .exercise-header \{\
+            padding: 20px 24px;\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: flex-start;\
+            gap: 16px;\
+        \}\
+        \
+        .exercise-num \{\
+            background: var(--accent);\
+            color: #000;\
+            font-size: 11px;\
+            font-weight: 700;\
+            padding: 3px 8px;\
+            border-radius: 4px;\
+            white-space: nowrap;\
+            flex-shrink: 0;\
+        \}\
+        \
+        .exercise-num.medium \{ background: var(--accent-orange); \}\
+        .exercise-num.hard \{ background: var(--accent-red); \}\
+        .exercise-num.nn \{ background: var(--accent-purple); \}\
+        \
+        .exercise-body \{ padding: 0 24px 20px; \}\
+        \
+        .exercise-question \{ font-size: 15px; font-weight: 500; flex: 1; \}\
+        \
+        .exercise-given \{\
+            background: var(--bg-card-2);\
+            border-radius: 6px;\
+            padding: 14px 18px;\
+            margin: 12px 0;\
+            font-family: var(--font-mono);\
+            font-size: 13px;\
+            color: var(--accent-teal);\
+        \}\
+        \
+        .show-answer-btn \{\
+            background: none;\
+            border: 1px solid var(--border);\
+            color: var(--text-muted);\
+            padding: 6px 14px;\
+            border-radius: 6px;\
+            font-size: 13px;\
+            font-weight: 500;\
+            cursor: pointer;\
+            transition: all 0.15s;\
+            white-space: nowrap;\
+            flex-shrink: 0;\
+        \}\
+        \
+        .show-answer-btn:hover \{\
+            border-color: var(--accent);\
+            color: var(--accent);\
+        \}\
+        \
+        .show-answer-btn.revealed \{\
+            border-color: var(--accent-green);\
+            color: var(--accent-green);\
+        \}\
+        \
+        .answer \{\
+            display: none;\
+            border-top: 1px solid var(--border);\
+            padding: 20px 24px;\
+            background: rgba(63, 185, 80, 0.03);\
+        \}\
+        \
+        .answer.visible \{ display: block; \}\
+        \
+        .answer-label \{\
+            font-size: 11px;\
+            font-weight: 700;\
+            letter-spacing: 1px;\
+            text-transform: uppercase;\
+            color: var(--accent-green);\
+            margin-bottom: 16px;\
+        \}\
+        \
+        /* Gradient Table */\
+        .gradient-table \{ \
+            display: grid;\
+            grid-template-columns: 1fr 1fr 1fr;\
+            gap: 8px;\
+            margin: 16px 0;\
+        \}\
+        \
+        .grad-cell \{\
+            background: var(--bg-card-2);\
+            border: 1px solid var(--border);\
+            border-radius: 6px;\
+            padding: 10px 14px;\
+            font-family: var(--font-mono);\
+            font-size: 13px;\
+        \}\
+        \
+        .grad-label \{ font-size: 11px; color: var(--text-muted); margin-bottom: 4px; \}\
+        .grad-value \{ color: var(--accent-teal); font-weight: 600; \}\
+        \
+        /* Calculator */\
+        .calculator \{\
+            background: var(--bg-card);\
+            border: 1px solid var(--border);\
+            border-radius: 8px;\
+            padding: 24px;\
+            margin: 24px 0;\
+        \}\
+        \
+        .calc-title \{\
+            font-size: 15px;\
+            font-weight: 600;\
+            margin-bottom: 20px;\
+            color: var(--accent-teal);\
+        \}\
+        \
+        .calc-grid \{\
+            display: grid;\
+            grid-template-columns: 1fr 1fr;\
+            gap: 16px;\
+            margin-bottom: 20px;\
+        \}\
+        \
+        .calc-field label \{\
+            display: block;\
+            font-size: 13px;\
+            font-weight: 500;\
+            color: var(--text-muted);\
+            margin-bottom: 6px;\
+        \}\
+        \
+        .calc-field input \{\
+            width: 100%;\
+            background: var(--bg-card-2);\
+            border: 1px solid var(--border);\
+            border-radius: 6px;\
+            padding: 10px 14px;\
+            font-family: var(--font-mono);\
+            font-size: 14px;\
+            color: var(--text);\
+            transition: border-color 0.15s;\
+        \}\
+        \
+        .calc-field input:focus \{\
+            outline: none;\
+            border-color: var(--accent);\
+        \}\
+        \
+        .calc-btn \{\
+            background: var(--accent);\
+            color: #000;\
+            border: none;\
+            border-radius: 6px;\
+            padding: 10px 20px;\
+            font-size: 14px;\
+            font-weight: 600;\
+            cursor: pointer;\
+            transition: opacity 0.15s;\
+        \}\
+        \
+        .calc-btn:hover \{ opacity: 0.85; \}\
+        \
+        .calc-results \{\
+            display: none;\
+            grid-template-columns: 1fr 1fr 1fr;\
+            gap: 12px;\
+            margin-top: 20px;\
+        \}\
+        \
+        .calc-results.visible \{ display: grid; \}\
+        \
+        .calc-result-item \{\
+            background: var(--bg-card-2);\
+            border: 1px solid var(--border);\
+            border-radius: 6px;\
+            padding: 14px;\
+        \}\
+        \
+        .calc-result-label \{\
+            font-size: 12px;\
+            color: var(--text-muted);\
+            margin-bottom: 4px;\
+        \}\
+        \
+        .calc-result-value \{\
+            font-family: var(--font-mono);\
+            font-size: 20px;\
+            font-weight: 700;\
+            color: var(--accent);\
+        \}\
+        \
+        /* Columns */\
+        .two-col \{\
+            display: grid;\
+            grid-template-columns: 1fr 1fr;\
+            gap: 16px;\
+            margin: 16px 0;\
+        \}\
+        \
+        @media (max-width: 600px) \{\
+            .two-col \{ grid-template-columns: 1fr; \}\
+            .calc-grid \{ grid-template-columns: 1fr; \}\
+            .calc-results \{ grid-template-columns: 1fr 1fr; \}\
+            .gradient-table \{ grid-template-columns: 1fr 1fr; \}\
+        \}\
+        \
+        /* Badges */\
+        .badge \{\
+            display: inline-block;\
+            padding: 2px 8px;\
+            border-radius: 20px;\
+            font-size: 12px;\
+            font-weight: 600;\
+        \}\
+        \
+        .badge-blue \{ background: rgba(88, 166, 255, 0.15); color: var(--accent); \}\
+        .badge-teal \{ background: rgba(45, 212, 191, 0.15); color: var(--accent-teal); \}\
+        .badge-orange \{ background: rgba(210, 153, 34, 0.15); color: var(--accent-orange); \}\
+        .badge-red \{ background: rgba(248, 81, 73, 0.15); color: var(--accent-red); \}\
+        .badge-green \{ background: rgba(63, 185, 80, 0.15); color: var(--accent-green); \}\
+        \
+        /* Rule reminder box */\
+        .rule-box \{\
+            border: 1px solid var(--border);\
+            border-radius: 8px;\
+            overflow: hidden;\
+            margin: 20px 0;\
+        \}\
+        \
+        .rule-box-header \{\
+            background: var(--bg-card-2);\
+            padding: 10px 16px;\
+            font-size: 12px;\
+            font-weight: 700;\
+            letter-spacing: 0.5px;\
+            text-transform: uppercase;\
+            color: var(--text-muted);\
+            border-bottom: 1px solid var(--border);\
+        \}\
+        \
+        .rule-box-body \{\
+            padding: 16px;\
+            display: grid;\
+            gap: 10px;\
+        \}\
+        \
+        .rule-row \{\
+            display: grid;\
+            grid-template-columns: 100px 1fr;\
+            gap: 12px;\
+            align-items: center;\
+        \}\
+        \
+        .rule-name \{\
+            font-family: var(--font-mono);\
+            font-size: 12px;\
+            color: var(--accent-orange);\
+            font-weight: 600;\
+        \}\
+        \
+        /* Scrollbar */\
+        ::-webkit-scrollbar \{ width: 6px; height: 6px; \}\
+        ::-webkit-scrollbar-track \{ background: transparent; \}\
+        ::-webkit-scrollbar-thumb \{ background: var(--border); border-radius: 3px; \}\
+        \
+        /* Progress bar */\
+        .progress-bar \{\
+            height: 2px;\
+            background: var(--border);\
+            margin: 0;\
+        \}\
+        \
+        .progress-fill \{\
+            height: 100%;\
+            background: var(--accent);\
+            transition: width 0.3s;\
+        \}\
+        \
+        code \{\
+            font-family: var(--font-mono);\
+            background: var(--bg-card-2);\
+            padding: 2px 6px;\
+            border-radius: 4px;\
+            font-size: 0.9em;\
+        \}\
+        \
+        ul, ol \{ padding-left: 24px; margin-bottom: 16px; \}\
+        li \{ margin-bottom: 6px; \}\
+        \
+        strong \{ font-weight: 600; color: var(--text); \}\
+        \
+        /* Node styles for SVG */\
+        .node-circle \{ stroke-width: 2; \}\
+        .node-text \{ font-family: 'Inter', sans-serif; font-size: 14px; \}\
+        .forward-arrow \{ stroke: #58a6ff; stroke-width: 2; fill: none; \}\
+        .backward-arrow \{ stroke: #f85149; stroke-width: 2; fill: none; \}\
+        .value-text \{ font-family: 'JetBrains Mono', monospace; font-size: 13px; \}\
+        .gradient-text \{ font-family: 'JetBrains Mono', monospace; font-size: 11px; fill: #f85149; \}\
+        \
+    </style>\
+</head>\
+<body>\
+\
+<nav class="top-nav">\
+    <div class="nav-inner">\
+        <div class="nav-brand">\uc0\u55358 \u56800  DL Study Guide</div>\
+        <div class="nav-tabs">\
+            <button class="nav-tab active" onclick="showChapter('ch1', this)">\uc0\u9312  Gradient Theory</button>\
+            <button class="nav-tab" onclick="showChapter('ch2', this)">\uc0\u9313  Gradient Practice</button>\
+            <button class="nav-tab" onclick="showChapter('ch3', this)">\uc0\u9314  Epochs & Batches</button>\
+            <button class="nav-tab" onclick="showChapter('ch4', this)">\uc0\u9315  Batch Practice</button>\
+        </div>\
+    </div>\
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:25%"></div></div>\
+</nav>\
+\
+<div class="container">\
+\
+<!-- \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \
+     CHAPTER 1: Backprop Theory\
+\uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552  -->\
+<section class="chapter active" id="ch1">\
+    <div class="chapter-header">\
+        <div class="chapter-tag">Chapter 1 \'b7 Theory</div>\
+        <h1>Backpropagation & Computational Graphs</h1>\
+        <p class="chapter-desc">How neural networks compute gradients efficiently using the chain rule. This is exam material \'97 understand every step.</p>\
+    </div>\
+    \
+    <h2>What is a Computational Graph?</h2>\
+    <p>A computational graph breaks a complex function into a sequence of simple operations (nodes). Each node knows its <strong>local gradient</strong> (how its output changes w.r.t. its inputs). Backpropagation flows gradients backwards through the graph using the <strong>chain rule</strong>.</p>\
+    \
+    <div class="two-col">\
+        <div class="card">\
+            <h3 style="margin-top:0">Two Node Types</h3>\
+            <div class="def-list">\
+                <div class="def-item">\
+                    <span class="def-term">+ (Addition)</span>\
+                    <span class="def-desc">Gradient <strong>distributor</strong>: passes upstream gradient unchanged to both inputs</span>\
+                </div>\
+                <div class="def-item">\
+                    <span class="def-term">\'d7 (Multiply)</span>\
+                    <span class="def-desc">Gradient <strong>switcher</strong>: each input gets the other input's value \'d7 upstream gradient</span>\
+                </div>\
+            </div>\
+        </div>\
+        <div class="card">\
+            <h3 style="margin-top:0">Chain Rule (Core)</h3>\
+            <div class="math-block" style="margin:0">\
+                $$\\frac\{\\partial \\text\{Loss\}\}\{\\partial x\} = \\frac\{\\partial \\text\{Loss\}\}\{\\partial z\} \\cdot \\frac\{\\partial z\}\{\\partial x\}$$\
+            </div>\
+            <p style="margin-top:12px;font-size:14px;color:var(--text-muted)">Each node multiplies the incoming upstream gradient by its local gradient.</p>\
+        </div>\
+    </div>\
+    \
+    <h2>Worked Example: f(x,y,z) = (x+y)\'b7z</h2>\
+    <p>This is exactly the example from lecture slides 55\'9658 by Prof. Godinho de Matos.</p>\
+    \
+    <div class="info-box teal">\
+        <strong>Function decomposition:</strong><br>\
+        Step 1 \'97 Let $q = x + y$ (addition node)<br>\
+        Step 2 \'97 Let $f = q \\cdot z$ (multiplication node)<br>\
+        Values: $x = -2,\\; y = 5,\\; z = -4$\
+    </div>\
+    \
+    <h3>Step 1: Forward Pass</h3>\
+    <p>Compute values left \uc0\u8594  right through the graph:</p>\
+    \
+    <div class="graph-container">\
+        <!-- SVG Computational Graph - Forward Pass -->\
+        <svg width="600" height="200" viewBox="0 0 600 200">\
+            <!-- Forward arrows -->\
+            <defs>\
+                <marker id="arrow-fwd" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">\
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#58a6ff"/>\
+                </marker>\
+                <marker id="arrow-bwd" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">\
+                    <polygon points="10 0, 0 3.5, 10 7" fill="#f85149"/>\
+                </marker>\
+            </defs>\
+            \
+            <!-- x input -->\
+            <text x="40" y="85" fill="#e6edf3" font-family="Inter,sans-serif" font-size="14" font-weight="500">x</text>\
+            <text x="55" y="85" fill="#2dd4bf" font-family="JetBrains Mono,monospace" font-size="13"> = \uc0\u8722 2</text>\
+            \
+            <!-- y input -->\
+            <text x="40" y="130" fill="#e6edf3" font-family="Inter,sans-serif" font-size="14" font-weight="500">y</text>\
+            <text x="55" y="130" fill="#2dd4bf" font-family="JetBrains Mono,monospace" font-size="13"> = 5</text>\
+            \
+            <!-- z input -->\
+            <text x="40" y="175" fill="#e6edf3" font-family="Inter,sans-serif" font-size="14" font-weight="500">z</text>\
+            <text x="55" y="175" fill="#2dd4bf" font-family="JetBrains Mono,monospace" font-size="13"> = \uc0\u8722 4</text>\
+            \
+            <!-- Arrow: x \uc0\u8594  + -->\
+            <line x1="115" y1="82" x2="165" y2="100" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-fwd)"/>\
+            <!-- Arrow: y \uc0\u8594  + -->\
+            <line x1="115" y1="127" x2="165" y2="110" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-fwd)"/>\
+            \
+            <!-- + node -->\
+            <circle cx="185" cy="107" r="20" fill="#1c2230" stroke="#58a6ff" stroke-width="2"/>\
+            <text x="185" y="113" fill="#58a6ff" font-family="Inter,sans-serif" font-size="18" text-anchor="middle">+</text>\
+            \
+            <!-- q value -->\
+            <text x="218" y="97" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">q</text>\
+            <text x="228" y="97" fill="#2dd4bf" font-family="JetBrains Mono,monospace" font-size="12"> = 3</text>\
+            \
+            <!-- Arrow: q \uc0\u8594  * -->\
+            <line x1="215" y1="107" x2="345" y2="107" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-fwd)"/>\
+            \
+            <!-- Arrow: z \uc0\u8594  * -->\
+            <line x1="115" y1="170" x2="350" y2="130" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-fwd)"/>\
+            \
+            <!-- \'d7 node -->\
+            <circle cx="370" cy="107" r="20" fill="#1c2230" stroke="#58a6ff" stroke-width="2"/>\
+            <text x="370" y="113" fill="#58a6ff" font-family="Inter,sans-serif" font-size="18" text-anchor="middle">\'d7</text>\
+            \
+            <!-- f output arrow -->\
+            <line x1="390" y1="107" x2="440" y2="107" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-fwd)"/>\
+            \
+            <!-- f value -->\
+            <text x="450" y="100" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">f</text>\
+            <text x="460" y="100" fill="#2dd4bf" font-family="JetBrains Mono,monospace" font-size="12"> = \uc0\u8722 12</text>\
+            \
+            <!-- Label: forward pass -->\
+            <text x="10" y="20" fill="#58a6ff" font-family="Inter,sans-serif" font-size="12" font-weight="600">FORWARD PASS \uc0\u8594 </text>\
+        </svg>\
+    </div>\
+    \
+    <div class="math-block">\
+        $$q = x + y = -2 + 5 = 3 \\qquad f = q \\cdot z = 3 \\times (-4) = -12$$\
+    </div>\
+    \
+    <h3>Step 2: Local Gradients (Partial Derivatives)</h3>\
+    <p>Before running the backward pass, compute the local gradient at each node:</p>\
+    \
+    <div class="rule-box">\
+        <div class="rule-box-header">Local Gradients \'97 Compute These First</div>\
+        <div class="rule-box-body">\
+            <div class="rule-row">\
+                <span class="rule-name">\uc0\u8706 f/\u8706 z = q</span>\
+                <span>= $3$ &nbsp;(because $f = q \\cdot z$, so derivative w.r.t. $z$ is the other factor $q$)</span>\
+            </div>\
+            <div class="rule-row">\
+                <span class="rule-name">\uc0\u8706 f/\u8706 q = z</span>\
+                <span>= $-4$ &nbsp;(because $f = q \\cdot z$, so derivative w.r.t. $q$ is the other factor $z$)</span>\
+            </div>\
+            <div class="rule-row">\
+                <span class="rule-name">\uc0\u8706 q/\u8706 x = 1</span>\
+                <span>= $1$ &nbsp;(because $q = x + y$, adding 1 to $x$ adds 1 to $q$)</span>\
+            </div>\
+            <div class="rule-row">\
+                <span class="rule-name">\uc0\u8706 q/\u8706 y = 1</span>\
+                <span>= $1$ &nbsp;(same reason)</span>\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <h3>Step 3: Backward Pass (Chain Rule)</h3>\
+    <p>Start from the output (upstream gradient = 1) and work <strong>right \uc0\u8594  left</strong>, multiplying upstream gradient \'d7 local gradient at each step:</p>\
+    \
+    <div class="steps">\
+        <div class="step">\
+            <div class="step-num red">1</div>\
+            <div class="step-content">\
+                <div class="step-title">At the output: $\\partial f / \\partial f = 1$ (always 1)</div>\
+                <p style="margin:0;font-size:14px;color:var(--text-muted)">This is the starting upstream gradient. The loss gradient w.r.t. f is assumed to be 1.</p>\
+            </div>\
+        </div>\
+        <div class="step">\
+            <div class="step-num red">2</div>\
+            <div class="step-content">\
+                <div class="step-title">Gradient for z:</div>\
+                <div class="math-block" style="margin:8px 0">$$\\frac\{\\partial f\}\{\\partial z\} = \\underbrace\{\\frac\{\\partial f\}\{\\partial z\}\}_\{\\text\{local\}\} \\times \\underbrace\{1\}_\{\\text\{upstream\}\} = q \\times 1 = 3 \\times 1 = \\boxed\{3\}$$</div>\
+            </div>\
+        </div>\
+        <div class="step">\
+            <div class="step-num red">3</div>\
+            <div class="step-content">\
+                <div class="step-title">Gradient for q (flows into the + node):</div>\
+                <div class="math-block" style="margin:8px 0">$$\\frac\{\\partial f\}\{\\partial q\} = \\underbrace\{\\frac\{\\partial f\}\{\\partial q\}\}_\{\\text\{local\}\} \\times \\underbrace\{1\}_\{\\text\{upstream\}\} = z \\times 1 = -4 \\times 1 = \\boxed\{-4\}$$</div>\
+            </div>\
+        </div>\
+        <div class="step">\
+            <div class="step-num red">4</div>\
+            <div class="step-content">\
+                <div class="step-title">Gradient for x (chain rule through + node):</div>\
+                <div class="math-block" style="margin:8px 0">$$\\frac\{\\partial f\}\{\\partial x\} = \\underbrace\{\\frac\{\\partial f\}\{\\partial q\}\}_\{\\text\{upstream\}\} \\times \\underbrace\{\\frac\{\\partial q\}\{\\partial x\}\}_\{\\text\{local\}\} = (-4) \\times 1 = \\boxed\{-4\}$$</div>\
+            </div>\
+        </div>\
+        <div class="step">\
+            <div class="step-num red">5</div>\
+            <div class="step-content">\
+                <div class="step-title">Gradient for y (same logic):</div>\
+                <div class="math-block" style="margin:8px 0">$$\\frac\{\\partial f\}\{\\partial y\} = \\underbrace\{\\frac\{\\partial f\}\{\\partial q\}\}_\{\\text\{upstream\}\} \\times \\underbrace\{\\frac\{\\partial q\}\{\\partial y\}\}_\{\\text\{local\}\} = (-4) \\times 1 = \\boxed\{-4\}$$</div>\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <h2>Complete Backward Pass Diagram</h2>\
+    \
+    <div class="graph-container">\
+        <svg width="620" height="230" viewBox="0 0 620 230">\
+            <defs>\
+                <marker id="arr-fwd2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">\
+                    <polygon points="0 0, 8 3, 0 6" fill="#58a6ff"/>\
+                </marker>\
+                <marker id="arr-bwd2" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">\
+                    <polygon points="8 0, 0 3, 8 6" fill="#f85149"/>\
+                </marker>\
+            </defs>\
+            \
+            <!-- Labels -->\
+            <text x="10" y="18" fill="#58a6ff" font-family="Inter,sans-serif" font-size="11" font-weight="600">\uc0\u8594  FORWARD (values)</text>\
+            <text x="200" y="18" fill="#f85149" font-family="Inter,sans-serif" font-size="11" font-weight="600">\uc0\u8592  BACKWARD (gradients)</text>\
+            \
+            <!-- Inputs -->\
+            <text x="20" y="75" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">x = \uc0\u8722 2</text>\
+            <text x="20" y="120" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">y = 5</text>\
+            <text x="20" y="190" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">z = \uc0\u8722 4</text>\
+            \
+            <!-- Forward arrows input \uc0\u8594  + -->\
+            <line x1="90" y1="72" x2="148" y2="97" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-fwd2)"/>\
+            <line x1="90" y1="117" x2="148" y2="110" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-fwd2)"/>\
+            \
+            <!-- + node -->\
+            <circle cx="170" cy="107" r="22" fill="#1c2230" stroke="#58a6ff" stroke-width="2"/>\
+            <text x="170" y="114" fill="#58a6ff" font-family="Inter,sans-serif" font-size="20" text-anchor="middle" font-weight="300">+</text>\
+            \
+            <!-- q value label -->\
+            <text x="204" y="96" fill="#8b949e" font-family="Inter,sans-serif" font-size="11">q = 3</text>\
+            \
+            <!-- Forward: q \uc0\u8594  \'d7 -->\
+            <line x1="192" y1="107" x2="348" y2="107" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-fwd2)"/>\
+            \
+            <!-- Forward: z \uc0\u8594  \'d7 -->\
+            <line x1="90" y1="186" x2="348" y2="130" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-fwd2)"/>\
+            \
+            <!-- \'d7 node -->\
+            <circle cx="370" cy="107" r="22" fill="#1c2230" stroke="#58a6ff" stroke-width="2"/>\
+            <text x="370" y="114" fill="#58a6ff" font-family="Inter,sans-serif" font-size="20" text-anchor="middle">\'d7</text>\
+            \
+            <!-- Forward: \uc0\u8594  output -->\
+            <line x1="392" y1="107" x2="460" y2="107" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arr-fwd2)"/>\
+            \
+            <!-- f output -->\
+            <text x="468" y="100" fill="#e6edf3" font-family="Inter,sans-serif" font-size="13">f = \uc0\u8722 12</text>\
+            <text x="468" y="118" fill="#f85149" font-family="JetBrains Mono,monospace" font-size="11">\uc0\u8706 f/\u8706 f = 1</text>\
+            \
+            <!-- BACKWARD arrows -->\
+            <!-- from output \uc0\u8594  \'d7 -->\
+            <line x1="466" y1="125" x2="396" y2="120" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-bwd2)"/>\
+            \
+            <!-- backward \'d7 \uc0\u8594  q -->\
+            <line x1="348" y1="100" x2="195" y2="100" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-bwd2)"/>\
+            <text x="255" y="93" fill="#f85149" font-family="JetBrains Mono,monospace" font-size="11">\uc0\u8706 f/\u8706 q = \u8722 4</text>\
+            \
+            <!-- backward \'d7 \uc0\u8594  z -->\
+            <line x1="355" y1="128" x2="95" y2="190" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-bwd2)"/>\
+            <text x="175" y="170" fill="#f85149" font-family="JetBrains Mono,monospace" font-size="11">\uc0\u8706 f/\u8706 z = 3</text>\
+            \
+            <!-- backward + \uc0\u8594  x -->\
+            <line x1="150" y1="98" x2="95" y2="77" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-bwd2)"/>\
+            <text x="60" y="60" fill="#f85149" font-family="JetBrains Mono,monospace" font-size="10">\uc0\u8722 4\'d71 = \u8722 4</text>\
+            \
+            <!-- backward + \uc0\u8594  y -->\
+            <line x1="150" y1="115" x2="95" y2="120" stroke="#f85149" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-bwd2)"/>\
+            <text x="55" y="140" fill="#f85149" font-family="JetBrains Mono,monospace" font-size="10">\uc0\u8722 4\'d71 = \u8722 4</text>\
+        </svg>\
+    </div>\
+    \
+    <h2>Summary: All Gradients</h2>\
+    \
+    <div class="gradient-table">\
+        <div class="grad-cell">\
+            <div class="grad-label">\uc0\u8706 f/\u8706 f</div>\
+            <div class="grad-value">1</div>\
+        </div>\
+        <div class="grad-cell">\
+            <div class="grad-label">\uc0\u8706 f/\u8706 z</div>\
+            <div class="grad-value">+3</div>\
+        </div>\
+        <div class="grad-cell">\
+            <div class="grad-label">\uc0\u8706 f/\u8706 q</div>\
+            <div class="grad-value">\uc0\u8722 4</div>\
+        </div>\
+        <div class="grad-cell">\
+            <div class="grad-label">\uc0\u8706 f/\u8706 x</div>\
+            <div class="grad-value">\uc0\u8722 4</div>\
+        </div>\
+        <div class="grad-cell">\
+            <div class="grad-label">\uc0\u8706 f/\u8706 y</div>\
+            <div class="grad-value">\uc0\u8722 4</div>\
+        </div>\
+        <div class="grad-cell" style="background:rgba(88,166,255,0.08); border-color:rgba(88,166,255,0.3)">\
+            <div class="grad-label" style="color:var(--accent)">Interpretation</div>\
+            <div class="grad-value" style="color:var(--accent);font-size:11px">Increasing x by 1 decreases f by 4</div>\
+        </div>\
+    </div>\
+    \
+    <div class="info-box orange">\
+        <strong>\uc0\u9888 \u65039  Exam Tip \'97 The Two Golden Rules:</strong>\
+        <ul style="margin-top:8px;margin-bottom:0">\
+            <li><strong>Addition node (+):</strong> Gradient passes through unchanged (local grad = 1)</li>\
+            <li><strong>Multiplication node (\'d7):</strong> Each input's gradient = upstream \'d7 <em>the other input's value</em></li>\
+        </ul>\
+    </div>\
+    \
+    <h2>Why This Matters for Neural Networks</h2>\
+    <p>In a real neural network, every <strong>weight</strong> is like $x$, $y$, or $z$ in this example. The loss function is like $f$. Backpropagation computes $\\partial\\text\{Loss\}/\\partial w$ for <strong>every single weight</strong> in one efficient backward pass. The weight update rule is then:</p>\
+    \
+    <div class="math-block">\
+        $$w_\{\\text\{new\}\} = w_\{\\text\{old\}\} - \\lambda \\cdot \\frac\{\\partial \\text\{Loss\}\}\{\\partial w\}$$\
+    </div>\
+    \
+    <p>For the digit recognition network with 13,002 parameters, backpropagation computes all 13,002 gradients in one pass \'97 far more efficient than computing each separately.</p>\
+    \
+</section>\
+\
+<!-- \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \
+     CHAPTER 2: Gradient Practice\
+\uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552  -->\
+<section class="chapter" id="ch2">\
+    <div class="chapter-header">\
+        <div class="chapter-tag">Chapter 2 \'b7 Practice</div>\
+        <h1>Gradient Exercises</h1>\
+        <p class="chapter-desc">Exam-level practice. Solve each problem fully before revealing the answer. Part A: function-level. Part B: neural network perceptron.</p>\
+    </div>\
+    \
+    <div class="info-box">\
+        <strong>Method for every question:</strong><br>\
+        1. Decompose the function into simple nodes<br>\
+        2. Forward pass: plug in the values<br>\
+        3. Compute local gradients at each node<br>\
+        4. Backward pass: apply chain rule right \uc0\u8594  left\
+    </div>\
+    \
+    <h2>Part A \'97 Function-Level Exercises</h2>\
+    \
+    <!-- EXERCISE 1 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num">EXERCISE 1 \'b7 EASY</span>\
+                <p class="exercise-question" style="margin-top:8px">Compute all gradients for $f(x, y, z) = x \\cdot y + z$</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex1', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Values: x = 3, y = 4, z = 2<br>\
+                Find: \uc0\u8706 f/\u8706 x, \u8706 f/\u8706 y, \u8706 f/\u8706 z\
+            </div>\
+            <p style="font-size:14px;color:var(--text-muted);margin:0"><strong>Hint:</strong> Decompose into two nodes: multiplication ($p = x \\cdot y$) then addition ($f = p + z$)</p>\
+        </div>\
+        <div class="answer" id="ex1">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <h3 style="margin-top:0">Decompose:</h3>\
+            <p>$p = x \\cdot y$ &nbsp; (multiplication node) <br> $f = p + z$ &nbsp; (addition node)</p>\
+            \
+            <h3>Forward Pass:</h3>\
+            <div class="math-block">$$p = 3 \\times 4 = 12 \\qquad f = 12 + 2 = 14$$</div>\
+            \
+            <h3>Local Gradients:</h3>\
+            <div class="gradient-table">\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 p (add node)</div><div class="grad-value">1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 z (add node)</div><div class="grad-value">1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 p/\u8706 x (mult node)</div><div class="grad-value">y = 4</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 p/\u8706 y (mult node)</div><div class="grad-value">x = 3</div></div>\
+            </div>\
+            \
+            <h3>Backward Pass (upstream = 1):</h3>\
+            <div class="math-block">\
+                $$\\frac\{\\partial f\}\{\\partial z\} = 1 \\times 1 = \\boxed\{1\}$$\
+                $$\\frac\{\\partial f\}\{\\partial x\} = \\underbrace\{1\}_\{\\partial f/\\partial p\} \\times \\underbrace\{4\}_\{\\partial p/\\partial x\} = \\boxed\{4\}$$\
+                $$\\frac\{\\partial f\}\{\\partial y\} = \\underbrace\{1\}_\{\\partial f/\\partial p\} \\times \\underbrace\{3\}_\{\\partial p/\\partial y\} = \\boxed\{3\}$$\
+            </div>\
+            \
+            <div class="info-box green" style="margin-top:16px">\
+                <strong>Interpretation:</strong> Increasing $z$ by 1 increases $f$ by 1 (additive, direct). Increasing $x$ by 1 increases $f$ by 4 (= $y$), because the multiplication node swaps values.\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <!-- EXERCISE 2 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num">EXERCISE 2 \'b7 EASY</span>\
+                <p class="exercise-question" style="margin-top:8px">Compute all gradients for $f(x, y, z) = (x + y) \\cdot z$ &nbsp; <em>(same structure as lecture \'97 different values)</em></p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex2', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Values: x = 1, y = 2, z = \uc0\u8722 3<br>\
+                Find: \uc0\u8706 f/\u8706 x, \u8706 f/\u8706 y, \u8706 f/\u8706 z (and \u8706 f/\u8706 q where q = x+y)\
+            </div>\
+        </div>\
+        <div class="answer" id="ex2">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <h3 style="margin-top:0">Decompose:</h3>\
+            <p>$q = x + y$ &nbsp; (addition node)<br>$f = q \\cdot z$ &nbsp; (multiplication node)</p>\
+            \
+            <h3>Forward Pass:</h3>\
+            <div class="math-block">$$q = 1 + 2 = 3 \\qquad f = 3 \\times (-3) = -9$$</div>\
+            \
+            <h3>Local Gradients:</h3>\
+            <div class="gradient-table">\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 z (mult)</div><div class="grad-value">q = 3</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 q (mult)</div><div class="grad-value">z = \u8722 3</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 q/\u8706 x (add)</div><div class="grad-value">1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 q/\u8706 y (add)</div><div class="grad-value">1</div></div>\
+            </div>\
+            \
+            <h3>Backward Pass:</h3>\
+            <div class="math-block">\
+                $$\\frac\{\\partial f\}\{\\partial z\} = q \\times 1 = 3 \\times 1 = \\boxed\{3\}$$\
+                $$\\frac\{\\partial f\}\{\\partial q\} = z \\times 1 = -3 \\times 1 = \\boxed\{-3\}$$\
+                $$\\frac\{\\partial f\}\{\\partial x\} = \\frac\{\\partial f\}\{\\partial q\} \\cdot \\frac\{\\partial q\}\{\\partial x\} = (-3)(1) = \\boxed\{-3\}$$\
+                $$\\frac\{\\partial f\}\{\\partial y\} = \\frac\{\\partial f\}\{\\partial q\} \\cdot \\frac\{\\partial q\}\{\\partial y\} = (-3)(1) = \\boxed\{-3\}$$\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <!-- EXERCISE 3 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num medium">EXERCISE 3 \'b7 MEDIUM</span>\
+                <p class="exercise-question" style="margin-top:8px">Compute all gradients for $f(x, y, z) = x \\cdot (y + z)$</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex3', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Values: x = \uc0\u8722 2, y = 3, z = 1<br>\
+                Find: \uc0\u8706 f/\u8706 x, \u8706 f/\u8706 y, \u8706 f/\u8706 z\
+            </div>\
+            <p style="font-size:14px;color:var(--text-muted);margin:0"><strong>Note:</strong> The structure is the same graph flipped \'97 addition first, then multiplication. But the variable in each node is different!</p>\
+        </div>\
+        <div class="answer" id="ex3">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <h3 style="margin-top:0">Decompose:</h3>\
+            <p>$s = y + z$ &nbsp; (addition node)<br>$f = x \\cdot s$ &nbsp; (multiplication node)</p>\
+            \
+            <h3>Forward Pass:</h3>\
+            <div class="math-block">$$s = 3 + 1 = 4 \\qquad f = (-2) \\times 4 = -8$$</div>\
+            \
+            <h3>Local Gradients:</h3>\
+            <div class="gradient-table">\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 x (mult)</div><div class="grad-value">s = 4</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 s (mult)</div><div class="grad-value">x = \u8722 2</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 s/\u8706 y (add)</div><div class="grad-value">1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 s/\u8706 z (add)</div><div class="grad-value">1</div></div>\
+            </div>\
+            \
+            <h3>Backward Pass:</h3>\
+            <div class="math-block">\
+                $$\\frac\{\\partial f\}\{\\partial x\} = s \\times 1 = 4 \\times 1 = \\boxed\{4\}$$\
+                $$\\frac\{\\partial f\}\{\\partial s\} = x \\times 1 = -2 \\times 1 = \\boxed\{-2\}$$\
+                $$\\frac\{\\partial f\}\{\\partial y\} = \\frac\{\\partial f\}\{\\partial s\} \\cdot \\frac\{\\partial s\}\{\\partial y\} = (-2)(1) = \\boxed\{-2\}$$\
+                $$\\frac\{\\partial f\}\{\\partial z\} = \\frac\{\\partial f\}\{\\partial s\} \\cdot \\frac\{\\partial s\}\{\\partial z\} = (-2)(1) = \\boxed\{-2\}$$\
+            </div>\
+            \
+            <div class="info-box teal" style="margin-top:16px">\
+                <strong>Key insight:</strong> The gradient for $x$ is $s = 4$ (the value of the other branch), while $y$ and $z$ both get $-2$ (the upstream gradient from the multiplication node, passed unchanged through the addition node).\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <!-- EXERCISE 4 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num medium">EXERCISE 4 \'b7 MEDIUM</span>\
+                <p class="exercise-question" style="margin-top:8px">Compute all gradients for $f(a, b, c, d) = (a + b) \\cdot (c + d)$</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex4', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Values: a = 1, b = 2, c = 3, d = 4<br>\
+                Find: \uc0\u8706 f/\u8706 a, \u8706 f/\u8706 b, \u8706 f/\u8706 c, \u8706 f/\u8706 d\
+            </div>\
+            <p style="font-size:14px;color:var(--text-muted);margin:0"><strong>Challenge:</strong> Two addition nodes feeding into one multiplication node. You have 4 inputs and two intermediate nodes $p$ and $q$.</p>\
+        </div>\
+        <div class="answer" id="ex4">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <h3 style="margin-top:0">Decompose:</h3>\
+            <p>$p = a + b$ &nbsp; | &nbsp; $q = c + d$ &nbsp; | &nbsp; $f = p \\cdot q$</p>\
+            \
+            <h3>Forward Pass:</h3>\
+            <div class="math-block">$$p = 1+2=3 \\qquad q = 3+4=7 \\qquad f = 3 \\times 7 = 21$$</div>\
+            \
+            <h3>Local Gradients:</h3>\
+            <div class="gradient-table">\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 p (mult)</div><div class="grad-value">q = 7</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 f/\u8706 q (mult)</div><div class="grad-value">p = 3</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 p/\u8706 a, \u8706 p/\u8706 b</div><div class="grad-value">1, 1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 q/\u8706 c, \u8706 q/\u8706 d</div><div class="grad-value">1, 1</div></div>\
+            </div>\
+            \
+            <h3>Backward Pass:</h3>\
+            <div class="math-block">\
+                $$\\frac\{\\partial f\}\{\\partial p\} = q = 7$$\
+                $$\\frac\{\\partial f\}\{\\partial q\} = p = 3$$\
+                $$\\frac\{\\partial f\}\{\\partial a\} = \\frac\{\\partial f\}\{\\partial p\} \\times 1 = 7 \\times 1 = \\boxed\{7\}$$\
+                $$\\frac\{\\partial f\}\{\\partial b\} = \\frac\{\\partial f\}\{\\partial p\} \\times 1 = 7 \\times 1 = \\boxed\{7\}$$\
+                $$\\frac\{\\partial f\}\{\\partial c\} = \\frac\{\\partial f\}\{\\partial q\} \\times 1 = 3 \\times 1 = \\boxed\{3\}$$\
+                $$\\frac\{\\partial f\}\{\\partial d\} = \\frac\{\\partial f\}\{\\partial q\} \\times 1 = 3 \\times 1 = \\boxed\{3\}$$\
+            </div>\
+            \
+            <div class="info-box orange" style="margin-top:16px">\
+                <strong>Pattern:</strong> $a$ and $b$ get the gradient from the $q$ branch (= 7). $c$ and $d$ get it from the $p$ branch (= 3). The multiplication node swaps the two branches' values as gradients.\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <h2>Part B \'97 Neural Network (Perceptron Level)</h2>\
+    \
+    <!-- EXERCISE 5 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num nn">EXERCISE 5 \'b7 PERCEPTRON</span>\
+                <p class="exercise-question" style="margin-top:8px">Full backprop through a single neuron with sigmoid activation and MSE loss</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex5', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Architecture: z = w\uc0\u8321 x\u8321  + w\u8322 x\u8322  + b &nbsp;\u8594 &nbsp; \'e2 = \u963 (z) &nbsp;\u8594 &nbsp; L = (\'e2 \u8722  y)\'b2<br><br>\
+                Given: w\uc0\u8321  = 0.5, w\u8322  = \u8722 0.3, x\u8321  = 2, x\u8322  = 1, b = 0.1, y = 1<br><br>\
+                Find: \uc0\u8706 L/\u8706 w\u8321 , \u8706 L/\u8706 w\u8322 , \u8706 L/\u8706 b<br>\
+                Bonus: Update w\uc0\u8321  with learning rate \u955  = 0.1\
+            </div>\
+            <p style="font-size:14px;color:var(--text-muted);margin:0"><strong>Key formula:</strong> Sigmoid derivative: $\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))$</p>\
+        </div>\
+        <div class="answer" id="ex5">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <h3 style="margin-top:0">Forward Pass:</h3>\
+            <div class="math-block">\
+                $$z = (0.5)(2) + (-0.3)(1) + 0.1 = 1.0 - 0.3 + 0.1 = 0.8$$\
+                $$\\hat\{a\} = \\sigma(0.8) = \\frac\{1\}\{1+e^\{-0.8\}\} \\approx \\frac\{1\}\{1+0.449\} \\approx 0.690$$\
+                $$L = (\\hat\{a\} - y)^2 = (0.690 - 1)^2 = (-0.310)^2 \\approx 0.096$$\
+            </div>\
+            \
+            <h3>Local Gradients:</h3>\
+            <div class="gradient-table">\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 L/\u8706 \'e2 (loss)</div><div class="grad-value">2(\'e2\u8722 y) = \u8722 0.620</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 \'e2/\u8706 z (sigmoid)</div><div class="grad-value">\'e2(1\u8722 \'e2) \u8776  0.214</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 z/\u8706 w\u8321 </div><div class="grad-value">x\u8321  = 2</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 z/\u8706 w\u8322 </div><div class="grad-value">x\u8322  = 1</div></div>\
+                <div class="grad-cell"><div class="grad-label">\uc0\u8706 z/\u8706 b</div><div class="grad-value">1</div></div>\
+            </div>\
+            \
+            <h3>Backward Pass (chain rule):</h3>\
+            <div class="math-block">\
+                $$\\frac\{\\partial L\}\{\\partial z\} = \\frac\{\\partial L\}\{\\partial \\hat\{a\}\} \\cdot \\frac\{\\partial \\hat\{a\}\}\{\\partial z\} = (-0.620)(0.214) \\approx -0.133$$\
+                $$\\frac\{\\partial L\}\{\\partial w_1\} = \\frac\{\\partial L\}\{\\partial z\} \\cdot \\frac\{\\partial z\}\{\\partial w_1\} = (-0.133)(2) = \\boxed\{-0.266\}$$\
+                $$\\frac\{\\partial L\}\{\\partial w_2\} = \\frac\{\\partial L\}\{\\partial z\} \\cdot \\frac\{\\partial z\}\{\\partial w_2\} = (-0.133)(1) = \\boxed\{-0.133\}$$\
+                $$\\frac\{\\partial L\}\{\\partial b\} = \\frac\{\\partial L\}\{\\partial z\} \\cdot \\frac\{\\partial z\}\{\\partial b\} = (-0.133)(1) = \\boxed\{-0.133\}$$\
+            </div>\
+            \
+            <h3>Weight Update (\uc0\u955  = 0.1):</h3>\
+            <div class="math-block">\
+                $$w_1^\{\\text\{new\}\} = w_1 - \\lambda \\frac\{\\partial L\}\{\\partial w_1\} = 0.5 - 0.1(-0.266) = 0.5 + 0.027 = \\boxed\{0.527\}$$\
+            </div>\
+            \
+            <div class="info-box green" style="margin-top:16px">\
+                <strong>Interpretation:</strong> The negative gradient $(-0.266)$ means that increasing $w_1$ currently <em>decreases</em> the loss. So gradient descent <em>increases</em> $w_1$ (subtracts a negative value). This nudges the prediction $\\hat\{a\}$ closer to the target $y=1$.\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <!-- EXERCISE 6 \'97 Harder reverse question -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num hard">EXERCISE 6 \'b7 HARD</span>\
+                <p class="exercise-question" style="margin-top:8px">Given gradients, find the missing input values</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('ex6', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Function: f(x, y, z) = (x + y) \'b7 z<br>\
+                Known: \uc0\u8706 f/\u8706 x = \u8722 5 and \u8706 f/\u8706 z = 3<br><br>\
+                Find the values of x, y, and z (assume upstream gradient = 1)\
+            </div>\
+        </div>\
+        <div class="answer" id="ex6">\
+            <div class="answer-label">\uc0\u10003  Step-by-Step Solution</div>\
+            \
+            <p>Working backwards from what we know:</p>\
+            \
+            <p><strong>From \uc0\u8706 f/\u8706 z = q:</strong><br>\
+            $\\partial f/\\partial z = q = x + y = 3$ &nbsp;\uc0\u8594 &nbsp; So $x + y = 3$</p>\
+            \
+            <p><strong>From \uc0\u8706 f/\u8706 x = \u8706 f/\u8706 q \'d7 \u8706 q/\u8706 x = z \'d7 1 = z:</strong><br>\
+            $\\partial f/\\partial x = z = -5$ &nbsp;\uc0\u8594 &nbsp; So $z = -5$</p>\
+            \
+            <p><strong>So we know:</strong> $z = -5$ and $x + y = 3$</p>\
+            \
+            <div class="info-box teal" style="margin-top:16px">\
+                <strong>Note:</strong> $x$ and $y$ individually are <em>underdetermined</em> \'97 only their sum matters. Any combination with $x + y = 3$ is valid (e.g., $x=1, y=2$ or $x=3, y=0$).\
+            </div>\
+            \
+            <div class="math-block">$$\\text\{Final answer: \} z = -5, \\quad x + y = 3, \\quad f = 3 \\times (-5) = -15$$</div>\
+        </div>\
+    </div>\
+    \
+</section>\
+\
+<!-- \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \
+     CHAPTER 3: Epochs & Batch Size Theory\
+\uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552  -->\
+<section class="chapter" id="ch3">\
+    <div class="chapter-header">\
+        <div class="chapter-tag">Chapter 3 \'b7 Theory</div>\
+        <h1>Batch Size, Steps & Epochs</h1>\
+        <p class="chapter-desc">Understanding how dataset size, batch size, and epochs interact to determine training dynamics. Prof. Godinho de Matos said this will be tested.</p>\
+    </div>\
+    \
+    <h2>Core Definitions</h2>\
+    \
+    <div class="def-list">\
+        <div class="def-item">\
+            <span class="def-term">N</span>\
+            <span class="def-desc"><strong>Dataset size</strong> \'97 total number of training examples in your dataset</span>\
+        </div>\
+        <div class="def-item">\
+            <span class="def-term">Batch Size (B)</span>\
+            <span class="def-desc"><strong>Number of examples per gradient update</strong> \'97 how many samples are processed before weights are updated once</span>\
+        </div>\
+        <div class="def-item">\
+            <span class="def-term">Step / Iteration</span>\
+            <span class="def-desc"><strong>One weight update</strong> \'97 process one batch \uc0\u8594  compute loss \u8594  backprop \u8594  update weights</span>\
+        </div>\
+        <div class="def-item">\
+            <span class="def-term">Epoch</span>\
+            <span class="def-desc"><strong>One full pass through the entire dataset</strong> \'97 all N samples have been seen once</span>\
+        </div>\
+        <div class="def-item">\
+            <span class="def-term">Steps/Epoch</span>\
+            <span class="def-desc"><strong>Number of weight updates per epoch</strong> \'97 equals \uc0\u8968 N / B\u8969  (ceiling division)</span>\
+        </div>\
+    </div>\
+    \
+    <h2>The Key Formula</h2>\
+    \
+    <div class="math-block">\
+        $$\\text\{Steps per epoch\} = \\left\\lceil \\frac\{N\}\{B\} \\right\\rceil \\qquad \\text\{Total updates\} = \\text\{Epochs\} \\times \\text\{Steps per epoch\}$$\
+    </div>\
+    \
+    <div class="info-box teal">\
+        <strong>\uc0\u8968  \u8969  = Ceiling</strong>: Always round up. If $N=850$ and $B=100$, you get $\\lceil 8.5 \\rceil = 9$ steps. The last batch has only $850 - 8 \\times 100 = 50$ samples, but it still counts as a step.\
+    </div>\
+    \
+    <h2>The Three Types of Gradient Descent</h2>\
+    \
+    <table>\
+        <tr>\
+            <th>Type</th>\
+            <th>Batch Size</th>\
+            <th>Steps/Epoch (N=1000)</th>\
+            <th>Gradient Quality</th>\
+            <th>Used In Practice?</th>\
+        </tr>\
+        <tr>\
+            <td>Batch GD</td>\
+            <td style="color:var(--accent-teal)">B = N (all)</td>\
+            <td style="color:var(--accent-teal)">1</td>\
+            <td>Very accurate, slow</td>\
+            <td>Rarely</td>\
+        </tr>\
+        <tr>\
+            <td>Mini-batch GD</td>\
+            <td style="color:var(--accent)">32, 64, 128, 256</td>\
+            <td style="color:var(--accent)">8 \'96 32</td>\
+            <td>Balanced</td>\
+            <td><strong>\uc0\u9733  Standard</strong></td>\
+        </tr>\
+        <tr>\
+            <td>SGD (pure)</td>\
+            <td style="color:var(--accent-orange)">B = 1</td>\
+            <td style="color:var(--accent-orange)">1000</td>\
+            <td>Very noisy</td>\
+            <td>Rarely alone</td>\
+        </tr>\
+    </table>\
+    \
+    <h2>Effect of Changing Batch Size</h2>\
+    \
+    <div class="two-col">\
+        <div class="card card-highlight">\
+            <h3 style="margin-top:0;color:var(--accent)">\uc0\u8593  Larger Batch Size</h3>\
+            <ul style="margin-bottom:0">\
+                <li>Fewer steps per epoch</li>\
+                <li>More accurate gradient estimate</li>\
+                <li>More memory required (GPU)</li>\
+                <li>Fewer total weight updates</li>\
+                <li>May generalize <em>worse</em> (converges to sharp minima)</li>\
+                <li>Faster wall-clock time per epoch</li>\
+            </ul>\
+        </div>\
+        <div class="card card-warning">\
+            <h3 style="margin-top:0;color:var(--accent-orange)">\uc0\u8595  Smaller Batch Size</h3>\
+            <ul style="margin-bottom:0">\
+                <li>More steps per epoch</li>\
+                <li>Noisier gradient estimate</li>\
+                <li>Less memory required</li>\
+                <li>More total weight updates</li>\
+                <li>Often generalizes <em>better</em> (implicit regularization)</li>\
+                <li>Slower but can escape local minima</li>\
+            </ul>\
+        </div>\
+    </div>\
+    \
+    <h2>Concrete Example: N = 1,000</h2>\
+    \
+    <table>\
+        <tr>\
+            <th>Batch Size</th>\
+            <th>Steps/Epoch</th>\
+            <th>10 Epochs \uc0\u8594  Total Updates</th>\
+            <th>Last Batch Size</th>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent-teal)">B = 1000 (Full GD)</td>\
+            <td>1</td>\
+            <td>10</td>\
+            <td>1000 (full)</td>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent)">B = 256</td>\
+            <td>\uc0\u8968 1000/256\u8969  = 4</td>\
+            <td>40</td>\
+            <td>232</td>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent)">B = 128</td>\
+            <td>\uc0\u8968 1000/128\u8969  = 8</td>\
+            <td>80</td>\
+            <td>104</td>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent)">B = 64</td>\
+            <td>\uc0\u8968 1000/64\u8969  = 16</td>\
+            <td>160</td>\
+            <td>40</td>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent)">B = 32 \uc0\u9733 </td>\
+            <td>\uc0\u8968 1000/32\u8969  = 32</td>\
+            <td>320</td>\
+            <td>8</td>\
+        </tr>\
+        <tr>\
+            <td style="color:var(--accent-orange)">B = 1 (SGD)</td>\
+            <td>1000</td>\
+            <td>10,000</td>\
+            <td>1 (always)</td>\
+        </tr>\
+    </table>\
+    \
+    <div class="info-box orange">\
+        <strong>\uc0\u55357 \u56481  From the lecture (slide 44):</strong> The professor's annotation: <em>"To solve the problem of random noise \'97 we sample a random batch instead of just a single random sample data point to reduce the noise. Batch sizes: 32, 64, 128, etc. We configure it."</em>\
+    </div>\
+    \
+    <h2>Interactive Calculator</h2>\
+    \
+    <div class="calculator">\
+        <div class="calc-title">\uc0\u9881 \u65039  Batch Size & Epochs Calculator</div>\
+        <div class="calc-grid">\
+            <div class="calc-field">\
+                <label>Dataset Size (N)</label>\
+                <input type="number" id="calc-n" value="1000" min="1">\
+            </div>\
+            <div class="calc-field">\
+                <label>Batch Size (B)</label>\
+                <input type="number" id="calc-b" value="32" min="1">\
+            </div>\
+            <div class="calc-field">\
+                <label>Number of Epochs</label>\
+                <input type="number" id="calc-epochs" value="10" min="1">\
+            </div>\
+        </div>\
+        <button class="calc-btn" onclick="calculateBatch()">Calculate \uc0\u8594 </button>\
+        \
+        <div class="calc-results" id="calc-results">\
+            <div class="calc-result-item">\
+                <div class="calc-result-label">Steps per Epoch</div>\
+                <div class="calc-result-value" id="res-steps">\'97</div>\
+            </div>\
+            <div class="calc-result-item">\
+                <div class="calc-result-label">Total Weight Updates</div>\
+                <div class="calc-result-value" id="res-total">\'97</div>\
+            </div>\
+            <div class="calc-result-item">\
+                <div class="calc-result-label">Last Batch Size</div>\
+                <div class="calc-result-value" id="res-last">\'97</div>\
+            </div>\
+        </div>\
+    </div>\
+    \
+    <h2>Visualising the Effect on Updates</h2>\
+    <p>For the same dataset (N=1000) and same number of epochs (10), smaller batch size = many more weight updates:</p>\
+    \
+    <div class="card">\
+        <div id="bar-viz" style="display:grid;gap:8px">\
+            <!-- Generated by JS -->\
+        </div>\
+    </div>\
+    \
+</section>\
+\
+<!-- \uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \
+     CHAPTER 4: Batch/Epoch Practice\
+\uc0\u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552 \u9552  -->\
+<section class="chapter" id="ch4">\
+    <div class="chapter-header">\
+        <div class="chapter-tag">Chapter 4 \'b7 Practice</div>\
+        <h1>Batch Size & Epochs Exercises</h1>\
+        <p class="chapter-desc">Exam-level practice. Always show your formula and working. Remember: Steps/Epoch = \uc0\u8968 N/B\u8969 </p>\
+    </div>\
+    \
+    <div class="info-box">\
+        <strong>Formula to memorise:</strong> $\\text\{Steps per epoch\} = \\left\\lceil \\dfrac\{N\}\{B\} \\right\\rceil$ &nbsp; and &nbsp; $\\text\{Total updates\} = \\text\{Epochs\} \\times \\text\{Steps per epoch\}$\
+    </div>\
+    \
+    <!-- Exercise B1 -->\
+    <div class="exercise">\
+        <div class="exercise-header">\
+            <div>\
+                <span class="exercise-num">EXERCISE B1 \'b7 EASY</span>\
+                <p class="exercise-question" style="margin-top:8px">Basic steps and total updates calculation</p>\
+            </div>\
+            <button class="show-answer-btn" onclick="toggleAnswer('b1', this)">Show Answer</button>\
+        </div>\
+        <div class="exercise-body">\
+            <div class="exercise-given">\
+                Dataset: N = 1,000 samples. Batch size: B = 50. Epochs: 20.<br><br>\
+                a) How many steps per epoch?<br>\
+                b) How many total weight updates?<br>\
+                c) If B doubles to 100, how do both answers change?\
+            </div>\
+        </div>\
+        <div class="answer" id="b1">\
+            <div class="answer-label">\uc0\u10003  Solution</div>\
+            <p><strong>a) Steps per epoch:</strong></p>\
+            <div class="math-block">$$\\left\\lceil \\frac\{N\}\{B\} \\right\\rceil = \\left\\lceil \\frac\{1000\}\{50\} \\right\\rceil = \\lceil 20 \\rceil = \\boxed\{20 \\text\{ steps/epoch\}\}$$</div>\
+            \
+            <p><strong>b) Total updates:</strong></p>\
+            <div class="math-block">$$20 \\text\{ epochs\} \\times 20 \\text\{ steps/epoch\} = \\boxed\{400 \\text\{ total updates\}\}$$</div>\
+            \
+            <p><strong>c) With B = 100 (doubled):</strong></p>\
+            <div class="math-block">$$\\left\\lceil \\frac\{1000\}\{100\} \\right\\rceil = 10 \\text\{ steps/epoch\} \\qquad 10 \\times 20 = \\boxed\{}
