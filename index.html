@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  //fonts.googleapis.com">
+  //fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- KaTeX for math -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  //cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {
@@ -273,7 +273,7 @@
       transition:max-height .3s ease;
     }
     .answer-inner{padding:12px 16px 14px;font-size:14px}
-    .answer.open{max-height:800px}
+    .answer.open{max-height:900px}
     .answer-label{
       font-size:11px;
       text-transform:uppercase;
@@ -345,26 +345,26 @@
 
       <div style="margin-top:20px">
         <div class="nav-section-title">Chapters</div>
-        <ul class="nav-list">
-          <li class="nav-item">
+        <ul class="nav-listst">
+          >
             <button class="nav-btn active" data-target="ch1">
               <span>① Gradient Theory</span>
               <span class="nav-pill" id="pill-ch1">0/1</span>
             </button>
-          </li>
-          <li class="nav-item">
+          </l/li>
+          >
             <button class="nav-btn" data-target="ch2">
               <span>② Gradient Practice</span>
               <span class="nav-pill" id="pill-ch2">0/6</span>
             </button>
-          </li>
-          <li class="nav-item">
+          </l/li>
+          >
             <button class="nav-btn" data-target="ch3">
               <span>③ Epochs & Batches</span>
               <span class="nav-pill" id="pill-ch3">0/1</span>
             </button>
-          </li>
-          <li class="nav-item">
+          </l/li>
+          >
             <button class="nav-btn" data-target="ch4">
               <span>④ Batch Practice</span>
               <span class="nav-pill" id="pill-ch4">0/6</span>
@@ -395,17 +395,18 @@
 
       <div class="card">
         <span class="badge badge-blue">Idea</span>
-        <h2>Computational Graph = Function Broken into Tiny Ops</h2>
+        <h2>Computational graph = function broken into tiny ops</h2>
         <p>A <strong>computational graph</strong> rewrites a function as a sequence of simple nodes (add, multiply, activation, etc.). Each node has a <strong>local derivative</strong>. Backpropagation sends gradients from right → left using the chain rule.</p>
 
         <div class="two-col">
           <div>
             <h3>Two golden local rules</h3>
+            <u
             <ul>
-              <li><strong>Add node</strong> $q=x+y$: gradient splits into both branches<br>
+              ><strong>Add node</strong> $q=x+y$ distributes gradients:<br>
                 $$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial q},\quad \frac{\partial f}{\partial y} = \frac{\partial f}{\partial q}$$
-              </li>
-              <li><strong>Multiply node</strong> $f=uv$: each input gets the other one<br>
+              </l/li>
+              ><strong>Multiply node</strong> $f=uv$ swaps inputs as gradients:<br>
                 $$\frac{\partial f}{\partial u}=v,\quad \frac{\partial f}{\partial v}=u$$
               </li>
             </ul>
@@ -414,17 +415,17 @@
             <span class="badge">From the lecture</span>
             <p style="font-size:13px">
               Prof. Godinho de Matos uses exactly this example:<br>
-              $$q=x+y,\quad f=qz,\quad x=-2,\;y=5,\;z=-4$$
+              $$q=x+y, \quad f=qz, \quad x=-2,\; y=5,\; z=-4$$
             </p>
             <div class="math-block">
-              $$q = -2 + 5 = 3,\quad f = 3\cdot(-4) = -12$$
+              $$q = -2 + 5 = 3, \quad f = 3\cdot(-4) = -12$$
             </div>
           </div>
         </div>
       </div>
 
       <div class="card-soft">
-        <span class="badge badge-green">Exam Core</span>
+        <span class="badge badge-green">Exam core</span>
         <h2>Backward pass for $f(x,y,z)=(x+y)z$</h2>
         <p>Local gradients:</p>
         <div class="math-block">
@@ -437,7 +438,7 @@
             \frac{\partial f}{\partial x}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=(-4)\cdot1=-4,\quad
             \frac{\partial f}{\partial y}=(-4)\cdot1=-4$$
         </div>
-        <p>That’s the full backward pass. Chapter 2 just drills this pattern until it’s muscle memory.</p>
+        <p>That’s the full backward pass. Chapter 2 drills this pattern until it’s muscle memory.</p>
       </div>
     </article>
 
@@ -453,16 +454,13 @@
 
       <div class="card-soft">
         <span class="badge badge-blue">How to attack any exercise</span>
-        <ol>
-          <li>Rewrite the function as small nodes (introduce $q,p,\dots$).</li>
-          <li>Do a <strong>forward pass</strong>: compute every intermediate value.</li>
-          <li>Compute local derivatives at each node.</li>
-          <li>Run the <strong>backward pass</strong> using chain rule, right → left.</li>
+        <o<ol>
+          >Rewrite the function as small nodes (introduce $q,p,\dots$).</li>
+          >Do a <strong>forward pass</strong>: compute every intermediate value.</l/li>
+          >Compute local derivatives at each node.</l/li>
+          >Run the <strong>backward pass</strong> using chain rule, right → left.</li>
         </ol>
       </div>
-
-      <!-- EXERCISES – same content as before but shortened for space -->
-      <!-- For brevity I include 3 exercises; you can extend more in same pattern -->
 
       <!-- EX 1 -->
       <div class="exercise" data-ch="2">
@@ -527,11 +525,73 @@
         </div>
       </div>
 
-      <!-- EX 3 – neuron -->
+      <!-- EX 3 -->
       <div class="exercise" data-ch="2">
         <div class="exercise-header">
           <div>
-            <div class="exercise-meta">Exercise 3 · single neuron</div>
+            <div class="exercise-meta">Exercise 3 · function</div>
+            <div class="exercise-title">$f(x,y,z)=x(y+z)$</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            x = −2, y = 3, z = 1. &nbsp;Find: $\partial f/\partial x,\partial f/\partial y,\partial f/\partial z$.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <p>Let $s = y+z$, $f=x s$.</p>
+            <div class="math-block">
+              $$s=4,\quad f=-8$$
+              $$\frac{\partial f}{\partial x}=s=4,\quad
+                \frac{\partial f}{\partial s}=x=-2,\quad
+                \frac{\partial s}{\partial y}=1,\quad
+                \frac{\partial s}{\partial z}=1$$
+              $$\Rightarrow\; \frac{\partial f}{\partial y}=-2,\;
+                             \frac{\partial f}{\partial z}=-2$$
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EX 4 -->
+      <div class="exercise" data-ch="2">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise 4 · two adds + multiply</div>
+            <div class="exercise-title">$f(a,b,c,d)=(a+b)(c+d)$</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            a = 1, b = 2, c = 3, d = 4. &nbsp;Find: $\partial f/\partial a,\partial f/\partial b,\partial f/\partial c,\partial f/\partial d$.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <p>Let $p=a+b,\; q=c+d,\; f=pq$.</p>
+            <div class="math-block">
+              $$p=3,\; q=7,\; f=21$$
+              $$\frac{\partial f}{\partial p}=q=7,\quad
+                \frac{\partial f}{\partial q}=p=3$$
+              $$\Rightarrow\; \frac{\partial f}{\partial a}=\frac{\partial f}{\partial p}\cdot1=7,\;
+                             \frac{\partial f}{\partial b}=7$$
+              $$\frac{\partial f}{\partial c}=\frac{\partial f}{\partial q}\cdot1=3,\;
+                \frac{\partial f}{\partial d}=3$$
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EX 5 – neuron -->
+      <div class="exercise" data-ch="2">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise 5 · single neuron</div>
             <div class="exercise-title">Affine → Sigmoid → MSE loss</div>
           </div>
           <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
@@ -558,6 +618,36 @@
           </div>
         </div>
       </div>
+
+      <!-- EX 6 – reverse -->
+      <div class="exercise" data-ch="2">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise 6 · reverse reasoning</div>
+            <div class="exercise-title">Recover inputs from gradients</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            $f(x,y,z)=(x+y)z$ with upstream gradient 1 at $f$. You know<br>
+            $\partial f/\partial x = -5$ and $\partial f/\partial z = 3$.<br>
+            What can you say about $x,y,z$?
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <p>We know for this graph:</p>
+            <div class="math-block">
+              $$\frac{\partial f}{\partial z}=q=x+y,\quad
+                \frac{\partial f}{\partial x}=\frac{\partial f}{\partial q}\frac{\partial q}{\partial x}=z\cdot1=z$$
+            </div>
+            <p>Given $\partial f/\partial z = 3 \Rightarrow x+y = 3$ and $\partial f/\partial x=-5 \Rightarrow z=-5$.</p>
+            <p>Any $(x,y)$ with $x+y=3$ is consistent, e.g. $(1,2)$, $(3,0)$, etc.</p>
+          </div>
+        </div>
+      </div>
     </article>
 
     <!-- CHAPTER 3 – EPOCHS / BATCHES -->
@@ -572,17 +662,19 @@
 
       <div class="card">
         <span class="badge badge-blue">Definitions</span>
+        <u
         <ul>
-          <li><strong>Dataset size $N$</strong>: number of training examples.</li>
-          <li><strong>Batch size $B$</strong>: examples per gradient update.</li>
-          <li><strong>Step / iteration</strong>: one weight update (one batch processed).</li>
-          <li><strong>Epoch</strong>: one full pass through all $N$ examples.</li>
+          ><strong>Dataset size $N$</strong>: number of training examples.</l/li>
+          ><strong>Batch size $B$</strong>: examples per gradient update.</l/li>
+          ><strong>Step / iteration</strong>: one weight update (one batch processed).</l/li>
+          ><strong>Epoch</strong>: one full pass through all $N$ examples.</li>
         </ul>
         <div class="math-block">
           $$\text{steps/epoch} = \Big\lceil \frac{N}{B} \Big\rceil,
              \qquad
              \text{total updates} = \text{epochs} \times \text{steps/epoch}$$
         </div>
+        <p style="font-size:13px;color:var(--text-muted)">Ceiling means “round up”: if $N=850$ and $B=100$, then $\lceil 8.5 \rceil = 9$ steps (last batch has only 50 samples).</p>
       </div>
 
       <div class="card-soft">
@@ -590,15 +682,15 @@
         <p style="font-size:13px">Play with $N$, $B$ and epochs. Use this to build intuition for exam questions.</p>
         <div class="calc-grid">
           <div class="calc-field">
-            <label>Dataset size N</label>
+            abel>Dataset size N</label>
             <input id="n" type="number" value="1000" min="1">
           </div>
           <div class="calc-field">
-            <label>Batch size B</label>
+            abel>Batch size B</label>
             <input id="b" type="number" value="32" min="1">
           </div>
           <div class="calc-field">
-            <label>Epochs</label>
+            abel>Epochs</label>
             <input id="e" type="number" value="10" min="1">
           </div>
         </div>
@@ -634,8 +726,7 @@
         </p>
       </header>
 
-      <!-- Only two sample exercises; you can add more by copy-pasting -->
-
+      <!-- B1 -->
       <div class="exercise" data-ch="4">
         <div class="exercise-header">
           <div>
@@ -665,18 +756,141 @@
         </div>
       </div>
 
+      <!-- B2 -->
       <div class="exercise" data-ch="4">
         <div class="exercise-header">
           <div>
             <div class="exercise-meta">Exercise B2</div>
+            <div class="exercise-title">Non-divisible dataset</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            $N=850,\; B=64,\; \text{epochs}=15.$<br>
+            a) Steps/epoch? &nbsp; b) Total updates?<br>
+            c) How many samples in the last batch?
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <div class="math-block">
+              $$\text{steps/epoch}=\Big\lceil\frac{850}{64}\Big\rceil=\lceil13.28\dots\rceil=14$$
+              $$\text{total updates}=14\cdot15=210$$
+              Last batch size:
+              $$\text{last} = N - (14-1)\cdot64 = 850 - 13\cdot64 = 850-832 = 18$$
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B3 -->
+      <div class="exercise" data-ch="4">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise B3</div>
+            <div class="exercise-title">Compare GD, mini-batch, SGD</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            Dataset $N=2000$, epochs = 10.<br>
+            Compare:<br>
+            (i) $B=N$ (full batch GD) &nbsp; (ii) $B=32$ &nbsp; (iii) $B=1$ (pure SGD).<br>
+            For each: steps/epoch and total updates.
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <div class="math-block">
+              (i) $B=N=2000$:<br>
+              $$\text{steps/epoch}=\Big\lceil\frac{2000}{2000}\Big\rceil=1,\quad
+                \text{total}=1\cdot10=10$$
+              (ii) $B=32$:<br>
+              $$\text{steps/epoch}=\Big\lceil\frac{2000}{32}\Big\rceil=\lceil62.5\rceil=63,\quad
+                \text{total}=63\cdot10=630$$
+              (iii) $B=1$ (SGD):<br>
+              $$\text{steps/epoch}=2000,\quad \text{total}=2000\cdot10=20000$$
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B4 -->
+      <div class="exercise" data-ch="4">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise B4</div>
+            <div class="exercise-title">Target number of updates</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            You want exactly 300 gradient updates.<br>
+            Dataset $N=1200$, batch size $B=40$. How many epochs?
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <div class="math-block">
+              $$\text{steps/epoch}=\Big\lceil\frac{1200}{40}\Big\rceil=\lceil30\rceil=30$$
+              $$\text{epochs} = \frac{\text{total updates}}{\text{steps/epoch}}
+                = \frac{300}{30}=10$$
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B5 -->
+      <div class="exercise" data-ch="4">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise B5</div>
+            <div class="exercise-title">Effect of halving batch size</div>
+          </div>
+          <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-given">
+            $N=5000,\; B=250,\; \text{epochs}=8.$<br>
+            a) Steps/epoch and total updates?<br>
+            b) If you halve the batch size to $B=125$ (same epochs), recompute.<br>
+            c) Qualitatively, what changes besides the counts?
+          </div>
+        </div>
+        <div class="answer">
+          <div class="answer-inner">
+            <div class="answer-label">Solution</div>
+            <div class="math-block">
+              a) $B=250$:<br>
+              $$\text{steps/epoch}=\Big\lceil\frac{5000}{250}\Big\rceil=20,\quad
+                \text{total}=20\cdot8=160$$
+              b) $B=125$:<br>
+              $$\text{steps/epoch}=\Big\lceil\frac{5000}{125}\Big\rceil=40,\quad
+                \text{total}=40\cdot8=320$$
+            </div>
+            <p>c) Smaller batches → noisier gradients, more updates, lower memory usage and often slightly better generalisation; but each epoch takes longer.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- B6 -->
+      <div class="exercise" data-ch="4">
+        <div class="exercise-header">
+          <div>
+            <div class="exercise-meta">Exercise B6</div>
             <div class="exercise-title">Reverse: infer N from logs</div>
           </div>
           <button class="btn small" onclick="toggleAnswer(this)">Show answer</button>
         </div>
         <div class="exercise-body">
           <div class="exercise-given">
-            Training log: <code>epochs = 15</code>, <code>total updates = 4800</code>,
-            batch size $B=32$. Assume perfect divisibility.<br>
+            Training log: de>epochs = 15</code>, de>total updates = 4800</code>, batch size $B=32$. Assume no partial batches.<br>
             a) Steps/epoch? &nbsp; b) Dataset size $N$?
           </div>
         </div>
@@ -716,8 +930,11 @@
     btn.textContent = open ? 'Show answer' : 'Hide answer';
     if (!open) markDone(btn.closest('.exercise'));
   }
-  const totals = {2:6,4:6}; // you can increase if you add more
+
+  // update totals if you change the number of exercises
+  const totals = {2:6,4:6};
   const done = {2:0,4:0};
+
   function markDone(ex){
     const ch = ex.dataset.ch;
     if(!ch) return;
